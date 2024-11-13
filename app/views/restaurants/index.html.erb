@@ -1,0 +1,31 @@
+<h1 class="text-center my-4">All Restaurants</h1>
+
+<div class="container">
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-light">
+          <!-- Image du restaurant avec un effet de transition au survol -->
+          <img src="<%= restaurant.image_url %>" class="card-img-top" alt="<%= restaurant.name %> image" style="height: 200px; object-fit: cover;">
+
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to restaurant.name, restaurant_path(restaurant), class: "text-decoration-none text-dark" %>
+            </h5>
+            <p class="card-text"><%= restaurant.address %></p>
+            <p class="card-text"><strong>Category:</strong> <%= restaurant.category.capitalize %></p>
+          </div>
+
+          <div class="card-footer text-center">
+            <%= link_to 'View Details', restaurant_path(restaurant), class: "btn btn-outline-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Ajouter un bouton avec un effet de survol -->
+  <div class="text-center mt-4">
+    <%= link_to 'Add a new restaurant', new_restaurant_path, class: "btn btn-success btn-lg shadow-sm" %>
+  </div>
+</div>

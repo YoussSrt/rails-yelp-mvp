@@ -1,0 +1,27 @@
+<h1 class="text-center mb-4">New Review for <%= @restaurant.name %></h1>
+
+<div class="container">
+  <%= simple_form_for([@restaurant, @review]) do |f| %>
+    <div class="card p-4 shadow-lg rounded">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Review Details</h4>
+
+        <div class="form-group">
+          <%= f.input :content, label: "Content", placeholder: "Miam! Share your experience.", input_html: { class: "form-control", rows: 4 } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :rating, label: "Rating", as: :select, collection: 0..5, include_blank: "Choose a rating", input_html: { class: "form-control" } %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.button :submit, "Add Review", class: "btn btn-success btn-lg" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="text-center mt-4">
+    <%= link_to 'Back to Restaurant', restaurant_path(@restaurant), class: 'btn btn-secondary btn-lg' %>
+  </div>
+</div>

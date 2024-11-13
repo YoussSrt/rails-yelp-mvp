@@ -1,0 +1,35 @@
+<h1 class="text-center mb-5">Create a New Restaurant</h1>
+
+<div class="container">
+  <%= simple_form_for @restaurant do |f| %>
+    <div class="card p-4 shadow-lg rounded">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Restaurant Details</h4>
+
+        <div class="form-group">
+          <%= f.input :name, label: "Restaurant Name", input_html: { class: "form-control", placeholder: "Enter the restaurant name" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :address, label: "Address", input_html: { class: "form-control", placeholder: "Enter the address" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :category, label: "Category", as: :select, collection: ["Chinese", "Italian", "Japanese", "French", "Belgian"], input_html: { class: "form-control" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :phone_number, label: "Phone Number", input_html: { class: "form-control", placeholder: "Enter the phone number" } %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.button :submit, "Create Restaurant", class: "btn btn-success btn-lg" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="text-center mt-4">
+    <%= link_to 'Back to Restaurants', restaurants_path, class: 'btn btn-secondary btn-lg' %>
+  </div>
+</div>
